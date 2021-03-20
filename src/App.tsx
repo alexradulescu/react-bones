@@ -1,27 +1,36 @@
 import React from 'react'
 
-import { Stack } from './components'
+import { VStack, HStack, Paragraph } from './components'
+import { GlobalStyle } from './GlobalStyle'
 
 export default function App() {
   return (
     <div>
-      {[...Array(100).keys()].map((i) => (
-        // The Stack which calls functions for margin and more seems faster and cleaner on the DOM rendering.
-        <Stack key={i} gap="MD" direction="column" p="SM">
-          <span>AAA</span>
-          <span>BBB</span>
-          <span>CCC</span>
-          <span>DDD</span>
-        </Stack>
-
-        // The VanillaStack which using css variables and data attributes seems slower, probably from adding the extra attributes into DOM
-        // <VanillaStack key={i} gap="MD" direction="column" p="SM">
-        //   <span>AAA</span>
-        //   <span>BBB</span>
-        //   <span>CCC</span>
-        //   <span>DDD</span>
-        // </VanillaStack>
-      ))}
+      <GlobalStyle />
+      <HStack gap="SM" flexChildren="1">
+        <VStack gap="SM">
+          <Paragraph>Default Text</Paragraph>
+          <Paragraph size="3XL">3XL Text</Paragraph>
+          <Paragraph size="2XL">2XL Text</Paragraph>
+          <Paragraph size="XL">XL Text</Paragraph>
+          <Paragraph size="LG">LG Text</Paragraph>
+          <Paragraph size="MD">MD Text</Paragraph>
+          <Paragraph size="SM">SM Text</Paragraph>
+          <Paragraph size="XS">XS Text</Paragraph>
+        </VStack>
+        <VStack gap="SM">
+          <Paragraph>Default alignment</Paragraph>
+          <Paragraph align="center">Centered aligned</Paragraph>
+          <Paragraph align="start">Start aligned</Paragraph>
+          <Paragraph align="end">End aligned</Paragraph>
+        </VStack>
+        <VStack gap="SM">
+          <Paragraph>Default Transform</Paragraph>
+          <Paragraph transform="capitalize">capitalised text</Paragraph>
+          <Paragraph transform="uppercase">uppercase</Paragraph>
+          <Paragraph transform="lowercase">Lowercase</Paragraph>
+        </VStack>
+      </HStack>
     </div>
   )
 }
