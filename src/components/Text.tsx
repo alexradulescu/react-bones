@@ -15,16 +15,16 @@ interface TextProps {
   align?: CSSProperties['textAlign']
   transform?: CSSProperties['textTransform']
   size?: keyof typeof FontSize
-  
 }
 
 const getSize = (props: TextProps) => {
   return props.size
     ? {
-        gap: FontSize[props.size]
+        fontSize: FontSize[props.size]
       }
     : undefined
 }
+
 const getAlign = (props: TextProps) => {
   return props.align
     ? {
@@ -32,6 +32,7 @@ const getAlign = (props: TextProps) => {
       }
     : undefined
 }
+
 const getTransform = (props: TextProps) => {
   return props.transform
     ? {

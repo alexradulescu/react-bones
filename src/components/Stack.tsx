@@ -15,6 +15,7 @@ export enum Size {
 
 interface StackProps {
   direction?: CSSProperties['flexDirection']
+  flexChildren?: CSSProperties['flex']
   align?: CSSProperties['alignItems']
   justify?: CSSProperties['justifyContent']
   gap?: keyof typeof Size
@@ -41,6 +42,17 @@ const getDirection = (props: StackProps) => {
       }
     : undefined
 }
+
+const getFlexChildren = (props: StackProps) => {
+  return props.flexChildren
+    ? {
+        '& > *': {
+          flex: props.flexChildren || 'initial'
+        }
+      }
+    : undefined
+}
+
 const getAlign = (props: StackProps) => {
   return props.align
     ? {
@@ -48,6 +60,7 @@ const getAlign = (props: StackProps) => {
       }
     : undefined
 }
+
 const getJustify = (props: StackProps) => {
   return props.justify
     ? {
@@ -55,6 +68,7 @@ const getJustify = (props: StackProps) => {
       }
     : undefined
 }
+
 const getGap = (props: StackProps) => {
   return props.gap
     ? {
@@ -186,6 +200,7 @@ const getPaddings = (props: StackProps) => {
 export const HStack = styled('div')<StackProps>`
   display: flex;
 
+  ${getFlexChildren}
   ${getAlign}
   ${getJustify}
 
