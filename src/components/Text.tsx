@@ -1,15 +1,7 @@
 import { CSSProperties } from 'react'
 import { styled } from 'goober'
 
-export enum FontSize {
-  XS = '12px',
-  SM = '14px',
-  MD = '16px',
-  LG = '20px',
-  XL = '24px',
-  '2XL' = '28px',
-  '3XL' = '32px'
-}
+import { FontSize } from '../utils'
 
 interface TextProps {
   align?: CSSProperties['textAlign']
@@ -57,4 +49,22 @@ export const Heading = styled('h4')<TextProps>`
   ${getSize}
   ${getAlign}
   ${getTransform}
+`
+
+export const Anchor = styled('a')<TextProps>`
+  ${getSize}
+  ${getAlign}
+  ${getTransform}
+
+  color: var(--blue);
+
+  &:not([href]) {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:focus {
+    outline-color: currentColor;
+    outline-offset: 3px;
+  }
 `

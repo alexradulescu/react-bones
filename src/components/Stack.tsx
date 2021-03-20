@@ -1,17 +1,7 @@
 import { CSSProperties } from 'react'
 import { styled } from 'goober'
 
-export enum Size {
-  '3XS' = '2px',
-  '2XS' = '4px',
-  XS = '8px',
-  SM = '12px',
-  MD = '16px',
-  LG = '20px',
-  XL = '24px',
-  '2XL' = '28px',
-  '3XL' = '32px'
-}
+import { Size } from '../utils'
 
 interface StackProps {
   direction?: CSSProperties['flexDirection']
